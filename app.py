@@ -18,7 +18,7 @@ def teste():
 @app.route('/')
 def index():
     a = teste()
-    return render_template('index.html', a=a)
+    return render_template('index.html', casa=a + "TESTE")
 
 
 if __name__== "__main__":
