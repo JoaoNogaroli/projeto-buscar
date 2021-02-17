@@ -17,7 +17,7 @@ def teste():
 
 @app.route('/')
 def index():
-    a = teste()
+    a = str(teste())
     return render_template('index.html', casa=a + "TESTE")
 
 
