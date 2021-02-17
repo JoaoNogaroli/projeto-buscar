@@ -29,7 +29,6 @@ def teste():
 
 @app.route('/')
 def index():
-    a = teste()
     return render_template('index.html', casa = "TESS")
 
 
