@@ -2,11 +2,6 @@ from flask import Flask, render_template, url_for, request, session
 import json
 import os
 import json
-from selenium import webdriver
-import time
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
-import re
 
 
 
