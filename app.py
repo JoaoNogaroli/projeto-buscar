@@ -64,7 +64,7 @@ def teste():
     print("TESTE 1: ", results_sem_formato)    
     print("TESTE 2: ", links_resultados)    
 
-    return results_sem_formato, links_resultados
+    return results_sem_formato[0], links_resultados[0]
 
 
 @app.route('/')
