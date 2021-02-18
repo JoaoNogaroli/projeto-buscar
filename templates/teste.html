@@ -4,22 +4,89 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Resultados</title>
 </head>
 <body>
-    <form action="/teste" method="GET">
-        <div id="column">
-            {% for item_a in value_a %}
-            <li>{{ item_a }}</a>
-            {% endfor %}
+    <h1>Em Produção...</h1>
 
 
+    <hr>
+    <div style="display: flex;">
+        <!-- Column -->
+        <div style="
+            flex: 1;
+            /* Space between columns */
+            margin: 0 8px;
+            border-right: 1px solid black;
+            /* Layout each column */
+            display: flex;
+            flex-direction: column;
+        ">
+            <!-- Cover -->
+    
+            <!-- Content -->
+            <form action="/teste" method="GET">
+                <div id="column" style="margin-bottom: 25px;">
+                    {% for item_a in value_a %}
+                    <li>{{ item_a }}</a>
+                    {% endfor %}
+                </div>
+            </form>
+            <div style="
+                /* Take available height */
+                flex: 1;
+            ">
+                
+            </div>
+    
+            <!-- Button sticks to the bottom -->
         </div>
-        <div id="column">
-            {% for item_b in value_b %}
-            <li>{{ item_b }}</a>
-            {% endfor %}
+    
+        <!-- Repeat with other columns -->
+        
+
+        <!-- Column -->
+        <div style="
+            flex: 1;
+            /* Space between columns */
+            margin: 0 8px;
+    
+            /* Layout each column */
+            display: flex;
+            flex-direction: column;
+        ">
+            <!-- Cover -->
+            
+    
+            <!-- Content -->
+            <form action="/teste" method="GET">
+       
+                <div id="column">
+                    {% for item_b in value_b %}
+                    <li>{{ item_b }}</a>
+                    {% endfor %}
+                </div>
+            </form>
+            <div style="
+                /* Take available height */
+                flex: 1;
+            ">
+                
+            </div>
+    
+            <!-- Button sticks to the bottom -->
+            
         </div>
-    </form>
+    
+        <!-- Repeat with other columns -->
+        
+
+    </div>
+    
+
+
+    <hr>
+
+    
 </body>
 </html>
