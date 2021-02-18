@@ -19,6 +19,8 @@ html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+
 }
 
 body {
@@ -68,7 +70,10 @@ a:active,
 a:hover {
   outline: 0;
 }
+.title{
+  font-family: kiona;
 
+}
 abbr[title] {
   border-bottom: 1px dotted;
 }
@@ -330,8 +335,8 @@ h1 {
 .header-container .bcg {
   -webkit-transition: -webkit-transform 4s ease-out;
   transition: transform 4s ease-out;
-  -webkit-transform: scale(1.05);
-  -ms-transform: scale(1.05);
+  -webkit-transform: scale(1.5);
+  -ms-transform: scale(1.5);
   transform: scale(1.05);
   -webkit-transform-origin: top center;
   -ms-transform-origin: top center;
@@ -344,7 +349,7 @@ h1 {
   transform: scale(1);
 }
 
-.bcg {
+.bcg {  
   background: no-repeat center center;
   background-size: cover;
   position: absolute;
@@ -355,7 +360,7 @@ h1 {
 }
 
 .header-container .bcg {
-  background-image: url(https://ihatetomatoes.net/demos/scrollmagic-templates/scrollmagic-template-04/img/img_mountains01.jpg);
+  background-image: url(/static/foto.jpg);
   background-size: cover;
 }
 
@@ -365,8 +370,10 @@ h1 {
 }
 
 #slide02 .bcg {
-  background: url(https://ihatetomatoes.net/demos/scrollmagic-templates/scrollmagic-template-04/img/img_mountains03.jpg) no-repeat center center;
+  background-image: url(/static/foto2.jpg);
   background-size: cover;
+  transform: scale(1.05);
+
 }
 
 #slide03 .bcg {
@@ -641,9 +648,16 @@ p {
 .footer-container a {
   color: rgba(255, 255, 255, 0.5);
 }
-
-
+.pos{
+  font-family: kiona;
+}
+.wrapper{
+  font-family: kiona;
+}
 /* =Simple animation up */
+.slideInUp{
+  font-family: kiona;
+}
 
 .no-touch .slideInUp {
   visibility: hidden;
