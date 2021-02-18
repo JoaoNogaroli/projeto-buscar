@@ -61,29 +61,31 @@ def teste(word):
     print("TESTE 1: ", results_sem_formato)    
     #print("TESTE 2: ", links_resultados)    
     #, links_resultados[0]
-    driver.close()
+    #driver.close()
 
     #---------->
     a = word.split()
     print("TESTANDO: ", a)
     print("RESULTADOS: ", results_com_formato)
     for i in range(0, 5):
-        if a[0] and a[1] in results_com_formato[i]:
-            #print("Nome formatado: ",results_com_formato[i])
-            print("--------------------//-----------------")
-            print("Nome Completo: ", results_sem_formato[i])
-            rl.append(results_sem_formato[i])
-            print(f"item {i} contem o texto")
-            print(i, " link para a vaga: ", links_resultados[i])
-            lr.append(links_resultados[i])
-        # resultado_final.extend(results_sem_formato[i], links_resultados[i])
-            #resultado_final.append(links_resultados[i])
-            listar_resultados = list((rl, lr))
-            resultado_final.append(listar_resultados)
-            print("--------------------//-----------------")
-        else:
-            print("Error  ao content")
-
+            if a[0] and a[1] in results_com_formato[i]:
+                #print("Nome formatado: ",results_com_formato[i])
+                print("--------------------//-----------------")
+                print("Nome Completo: ", results_sem_formato[i])
+                rl.append(results_sem_formato[i])
+                print(f"item {i} contem o texto")
+                print(i, " link para a vaga: ", links_resultados[i])
+                lr.append(links_resultados[i])
+            # resultado_final.extend(results_sem_formato[i], links_resultados[i])
+                #resultado_final.append(links_resultados[i])
+                listar_resultados = list((rl, lr))
+                resultado_final.append(listar_resultados)
+                print("--------------------//-----------------")
+        
+            else:
+                print("Error  ao content")
+            
+      
 
 
     return rl, lr
