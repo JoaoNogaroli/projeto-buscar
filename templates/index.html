@@ -17,12 +17,16 @@
             <h1 class="title">Buscador de Vagas!</h1>
             <div class="container">
                 <div class="container__item">
-                    <form class="form">
-                        <input type="email" class="form__field" placeholder="Qual vaga está buscando?" />
-                        <button type="button" class="btn btn--primary btn--inside uppercase" onclick="teste()">Procurar</button>
+                    <form action="." class="form" method="POST">
+                        <input type="text" name="jojo" class="form__field" placeholder="Qual vaga está buscando?"/>
+                        <input type="submit" class="btn btn--primary btn--inside uppercase">
                         
                     </form>
+                                        
                 </div>
+
+              
+                
                 
                
             </div> 
@@ -69,25 +73,18 @@
  
      
                 <div id="column">
-                    <h3>Rio Vagas</h3>
-                    <li>{{a}}</a>
-                    <li>{{b}}</a>
-                    <p>Mais "X" resultados encontrados!</p> 
-                    <a href="#">Clique aqui para visualizar mais vagas</a>
+                    {% for item_a in value_a %}
+                    <li>{{ item_a }}</a>
+                    {% endfor %}
 
 
                 </div>
-             
                 <div id="column">
-                    <h3>Catho</h3>
-                    <p>"X" resultados encontrados</p> 
+                    {% for item_b in value_b %}
+                    <li>{{ item_b }}</a>
+                    {% endfor %}
 
 
-                </div>
-             
-                <div id="column">
-                    <h3>Outro site</h3>
-                    <p>"X" resultados encontrados</p> 
                 </div>
              
              
