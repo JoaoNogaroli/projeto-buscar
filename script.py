@@ -61,7 +61,7 @@ def teste(word):
     print("TESTE 1: ", results_sem_formato)    
     #print("TESTE 2: ", links_resultados)    
     #, links_resultados[0]
-    #driver.close()
+    driver.close()
 
     #---------->
     a = word.split()
