@@ -28,7 +28,7 @@
             <form action="/teste" method="GET">
                 <div id="column" style="margin-bottom: 25px;">
                     <h3> Nome da Vaga</h3>
-                    {% for item_a in value_a %}
+                    {% for item_a in a %}
                     <li>{{ item_a }}</a>
                     {% endfor %}
                 </div>
@@ -64,11 +64,12 @@
                 
                 <div id="column">
                     <h3>Link da Vaga</h3>
-                    {% for item_b in value_b %}
+                    {% for item_b in b %}
                     <li>{{ item_b }}</a>
                     {% endfor %}
                 </div>
             </form>
+            
             <div style="
                 /* Take available height */
                 flex: 1;

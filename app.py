@@ -1,7 +1,10 @@
+from celery import Celery
+from celeryconfig import CELERY_BROKER_BACKEND,result_backend
 from flask import Flask, render_template, url_for, request, session
 import json
 import os
 from script import teste
+from task import debug_task
 
 app = Flask(__name__)
 
@@ -11,8 +14,13 @@ port = int(os.environ.get("PORT", 5000))
 @app.route('/', methods = ['POST'])
 def pegar():
     word = request.form['jojo']
-    value_a, value_b = teste(word)
-    return render_template('teste.html', value_a = value_a, value_b = value_b) 
+    
+    a = debug_task.delay(word)
+    a_value = (a.get())[0]
+    b_value = (a.get())[1]
+
+    
+    return render_template('teste.html', a = a_value, b= b_value)
 
 
 @app.route('/')
