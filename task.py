@@ -34,8 +34,8 @@ firebase = pyrebase.initialize_app(firebaseConfig);
 database = firebase.database()
 
 
-@celery.task
-def debug_task(word):
+@celery.task(bind=true)
+def debug_task(self, word):
     url = "https://riovagas.com.br/"
     chrome_options = webdriver.ChromeOptions()
     chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -223,5 +223,5 @@ def debug_task(word):
 
 
     print("ACABOu")
-    return render_template('index.html')
+    return rl, lr
     
