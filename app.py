@@ -24,7 +24,7 @@ def index():
     return render_template('segundapag.html')
 
 
-@app.route('/segundapag/', methods = ['POST'])
+@app.route('/', methods = ['POST'])
 def pegar():
     word = request.form['jojo']
     
