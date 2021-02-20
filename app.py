@@ -19,11 +19,13 @@ def pegar():
     a = debug_task.delay(word)
     time.sleep(1)
     while a.state not in ('SUCCESS', 'FAILURE'): 
-        return redirect(url_for('index'), progress = a.status)        
+        a_value = (a.get())[0]
+        b_value = (a.get())[1] 
+        return render_template('teste.html', progress = a.status, a = a_value, b= b_value)
     else:
         a_value = (a.get())[0]
         b_value = (a.get())[1]        
-        return render_template('teste.html', progress = a.status, a = a_value, b= b_value)
+    return render_template('teste.html', progress = a.status, a = a_value, b= b_value)
 
 
 @app.route('/')

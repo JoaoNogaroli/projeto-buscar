@@ -223,5 +223,5 @@ def debug_task(word):
 
 
     print("ACABOu")
-    return rl, lr
+    return render_template('teste.html', a = rl, b= lr)
     
