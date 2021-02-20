@@ -2,7 +2,9 @@
     font-family: -apple-system, BlinkMacSystemFont, "San Francisco", Helvetica, Arial, sans-serif;
     font-weight: 300;
     margin: 0;
-  }
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
   
   html, body {
     height: 100vh;
@@ -116,152 +118,100 @@
     box-shadow: 0 2px 6px -8px rgba(182, 157, 230, 0.45);
   }
   
-  .floating-label {
-    position: relative;
-    margin-bottom: 10px;
-    width: 100%;
-  }
-  .floating-label label {
-    position: absolute;
-    top: calc(50% - 7px);
-    left: 0;
-    opacity: 0;
-    transition: all 0.3s ease;
-    padding-left: 44px;
-  }
-  .floating-label input {
-    width: calc(100% - 44px);
-    margin-left: auto;
-    display: flex;
-  }
-  .floating-label .icon {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 56px;
-    width: 44px;
-    display: flex;
-  }
-  .floating-label .icon svg {
-    height: 30px;
-    width: 30px;
-    margin: auto;
-    opacity: 0.15;
-    transition: all 0.3s ease;
-  }
-  .floating-label .icon svg path {
-    transition: all 0.3s ease;
-  }
-  .floating-label input:not(:-moz-placeholder-shown) {
-    padding: 28px 0px 12px 0px;
-  }
-  .floating-label input:not(:-ms-input-placeholder) {
-    padding: 28px 0px 12px 0px;
-  }
-  .floating-label input:not(:placeholder-shown) {
-    padding: 28px 0px 12px 0px;
-  }
-  .floating-label input:not(:-moz-placeholder-shown) + label {
-    transform: translateY(-10px);
-    opacity: 0.7;
-  }
-  .floating-label input:not(:-ms-input-placeholder) + label {
-    transform: translateY(-10px);
-    opacity: 0.7;
-  }
-  .floating-label input:not(:placeholder-shown) + label {
-    transform: translateY(-10px);
-    opacity: 0.7;
-  }
-  .floating-label input:valid:not(:-moz-placeholder-shown) + label + .icon svg {
-    opacity: 1;
-  }
-  .floating-label input:valid:not(:-ms-input-placeholder) + label + .icon svg {
-    opacity: 1;
-  }
-  .floating-label input:valid:not(:placeholder-shown) + label + .icon svg {
-    opacity: 1;
-  }
-  .floating-label input:valid:not(:-moz-placeholder-shown) + label + .icon svg path {
-    fill: #b69de6;
-  }
-  .floating-label input:valid:not(:-ms-input-placeholder) + label + .icon svg path {
-    fill: #b69de6;
-  }
-  .floating-label input:valid:not(:placeholder-shown) + label + .icon svg path {
-    fill: #b69de6;
-  }
-  .floating-label input:not(:valid):not(:focus) + label + .icon {
-    -webkit-animation-name: shake-shake;
-            animation-name: shake-shake;
-    -webkit-animation-duration: 0.3s;
-            animation-duration: 0.3s;
-  }
-  
-  @-webkit-keyframes shake-shake {
-    0% {
-      transform: translateX(-3px);
-    }
-    20% {
-      transform: translateX(3px);
-    }
-    40% {
-      transform: translateX(-3px);
-    }
-    60% {
-      transform: translateX(3px);
-    }
-    80% {
-      transform: translateX(-3px);
-    }
-    100% {
-      transform: translateX(0px);
-    }
-  }
-  
-  @keyframes shake-shake {
-    0% {
-      transform: translateX(-3px);
-    }
-    20% {
-      transform: translateX(3px);
-    }
-    40% {
-      transform: translateX(-3px);
-    }
-    60% {
-      transform: translateX(3px);
-    }
-    80% {
-      transform: translateX(-3px);
-    }
-    100% {
-      transform: translateX(0px);
-    }
-  }
   .session {
     display: flex;
     flex-direction: row;
-    width: auto;
-    height: auto;
+    width: 80%;
+    height: 80%;
     margin: auto auto;
-    background: #ffffff;
     border-radius: 4px;
     box-shadow: 0px 2px 6px -1px rgba(0, 0, 0, 0.12);
-  }
-  
-  .left {
-    width: 220px;
-    height: auto;
-    min-height: 100%;
+
+    min-height: 40%;
     position: relative;
-    background-image: url("https://images.pexels.com/photos/114979/pexels-photo-114979.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
-    background-size: cover;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
+    background-image: url(/static/foto3.jpg);
+    background-size:cover;
+
   }
+  .session{
+  -webkit-transition: -webkit-transform 60s ease-in;
+  transition: transform 60s ease-in;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1.30);
+  -webkit-transform-origin: left right;
+  -ms-transform-origin: left right;
+  transform-origin: left right;
+  }
+
+
+
+
+
   .left svg {
-    height: 40px;
-    width: auto;
-    margin: 20px;
+  height: 40px;
+  width: auto;
+  margin: 20px;
   }
+
+  .cima{
+  width : 42%;
+  height: auto;
+  margin: 0 auto;
+  border-left: 1px solid white;
+
+  }
+
+  .baixo{
+  width : 42%;
+  height: auto;
+  margin: 0% auto;
+  border-right: 1px solid white;
+
+  }
+  .footer-container{
+    position: absolute;
+    bottom: 0;
+    float: left;
+    width: 100%;
+    height: 40;
+    background-color: rgba(34, 30, 30, 0.747);
+    text-align: center;
+    align-items: center;
+  }
+  .wrapper a{
+    font-size: 15px;
+    font-family: kiona;
+  }
+
+
+
+  .footer-container a {
+    color: rgb(252, 252, 252);
+
+  }
+  form{
+    background-color: rgba(255, 255, 255, 0.753);
+    margin: 29% auto;
+    width: 250px;
+    height: 50%;
+  }
+  form input{
+    color: rgb(37, 37, 37);
+    width: 100%;
+    margin-bottom: 20px;
+    background-color:transparent;
+    text-align: center;
+    font-size: 20px;
+  }
+  .session p{
+    position: relative;
+    font-family: kiona;
+    font-size: 27px;
+    margin: 0;
+    margin-top: 50px;
+    margin-bottom: -50px;
+    text-align: center;
+  }
+
+  
