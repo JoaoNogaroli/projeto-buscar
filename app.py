@@ -12,7 +12,7 @@ app = Flask(__name__)
 port = int(os.environ.get("PORT", 5000))
       
 
-@app.route('/resultado', methods = ['POST'])
+@app.route('/', methods = ['POST'])
 def pegar():
     word = request.form['jojo']
     
@@ -20,11 +20,10 @@ def pegar():
     time.sleep(1)
     while a.status == "PENDING": 
         return render_template('teste.html', progress = a.status)        
-        break
-    a_value = (a.get())[0]
-    b_value = (a.get())[1]
-    
-    return render_template('teste.html', a = a_value, b= b_value)
+    else:
+        a_value = (a.get())[0]
+        b_value = (a.get())[1]        
+        return render_template('teste.html', progress = a.status, a = a_value, b= b_value)
 
 
 @app.route('/')
