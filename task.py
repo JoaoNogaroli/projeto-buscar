@@ -12,11 +12,23 @@ import cgi
 import os
 import sqlalchemy
 import time
-
+import re
 
 celery = Celery('task',broker=CELERY_BROKER_BACKEND, backend=result_backend)
 
 #celery.config_from_object('celeryconfig')
+firebaseConfig = {
+    "apiKey": "AIzaSyD-5dd-c9GUcNnJbzZwJsGyj5Mi077EJv0",
+    "authDomain": "celery-db.firebaseapp.com",
+    "projectId": "celery-db",
+    "storageBucket": "celery-db.appspot.com",
+    "messagingSenderId": "263395259912",
+    "appId": "1:263395259912:web:a45cc33a1140500971c3bd",
+    "measurementId": "G-6JT7B5X9DY"
+  }
+firebase = pyrebase.initialize_app(firebaseConfig)
+
+database = firebase.database()
 
 
 
@@ -195,6 +207,19 @@ def debug_task(word):
     #print("LISTA 2: ", lr)
 
     driver.close()
+
+    for i in range (0,15):
+        try:
+            database.child("TESTE").child(f'Resultado{i}').set({
+                f'NomeDaVaga{i}': rl[i],
+                f'LinkDaVaga{i}': lr[i]
+                })
+        except Exception:
+            print("error no teste")
+            continue
+    
+
+
 
     print("ACABOu")
     return rl, lr
