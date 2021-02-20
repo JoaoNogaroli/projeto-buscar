@@ -112,7 +112,7 @@ def debug_task(word):
     print("MOMENTO 2 ---- SE PASSOU DAQUI< RETIRA TUDO ANTES")   
     # AQUI EU JA PEGUEI VALORES DA 1º pÁGINA, e VOU COMEÇAR O A LISTAR RESULTADO DE TODAS AS PÁGINAS    
     listar_paginas = []
-    time.sleep(2.5)
+    time.sleep(0.5)
 
     for i in range (0, 15):
         time.sleep(0.5)
@@ -129,10 +129,10 @@ def debug_task(word):
     lastpag = int(listar_paginas[-1])
     #.get_attribute('innerHTML')
     print("--------------       INICIANDO => MUDANÇA DE PAGINA")
-    time.sleep(2.5)
+    time.sleep(0.5)
 
     for i in range(0, lastpag-1):
-        time.sleep(2.5)
+        time.sleep(0.5)
         try:
             elemento_tres = driver.find_element_by_xpath("//a[@class='next page-numbers']")
             driver.execute_script("arguments[0].click();", elemento_tres)
@@ -182,7 +182,7 @@ def debug_task(word):
                     print("Error  ao content")
 
             i = i+1
-            time.sleep(2)
+            time.sleep(0.5)
         except Exception as e:
             print(f"Errro na troca de págica {i}")
             continue

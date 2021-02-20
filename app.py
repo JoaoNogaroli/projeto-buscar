@@ -1,6 +1,6 @@
 from celery import Celery
 from celeryconfig import CELERY_BROKER_BACKEND,result_backend
-from flask import Flask, render_template, url_for, request, session, redirect
+from flask import Flask, render_template, url_for, request, session, redirect, HttpResponse
 import json
 import os
 from script import teste
@@ -17,7 +17,7 @@ def pegar():
     
     a = debug_task.delay(word)
     while a.status == "PENDING": 
-        return render_template('wait.html')
+        return HttpResponse('wait')
     a_value = (a.get())[0]
     b_value = (a.get())[1]
 
