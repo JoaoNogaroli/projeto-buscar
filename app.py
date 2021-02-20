@@ -18,13 +18,13 @@ def index():
     
     return render_template('index.html')
 
-@app.route('/segundapag')
+@app.route('/segundapag/')
 def index():    
     
     return render_template('segundapag.html')
 
 
-@app.route('/segundapag', methods = ['POST'])
+@app.route('/segundapag/', methods = ['POST'])
 def pegar():
     word = request.form['jojo']
     
