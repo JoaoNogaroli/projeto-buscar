@@ -13,6 +13,7 @@ import os
 import sqlalchemy
 import time
 import re
+import pyrebase
 
 celery = Celery('task',broker=CELERY_BROKER_BACKEND, backend=result_backend)
 
