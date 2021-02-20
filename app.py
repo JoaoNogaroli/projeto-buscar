@@ -12,7 +12,19 @@ app = Flask(__name__)
 port = int(os.environ.get("PORT", 5000))
       
 
-@app.route('/', methods = ['POST'])
+
+@app.route('/')
+def index():    
+    
+    return render_template('index.html')
+
+@app.route('/index_dps')
+def index():    
+    
+    return render_template('index_dps.html')
+
+
+@app.route('/index_dps', methods = ['POST'])
 def pegar():
     word = request.form['jojo']
     
@@ -27,11 +39,6 @@ def pegar():
     
     return render_template('teste.html', a = a_value, b= b_value)
 
-
-@app.route('/')
-def index():    
-    
-    return render_template('index.html')
 
 
 if __name__== "__main__":
