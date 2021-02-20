@@ -21,7 +21,7 @@ def pegar():
     a = debug_task.delay(word)
     a_id = debug_task(word).AsyncResult(task_id)
     b = a_id.get()
-    "time.sleep(1)
+    time.sleep(1)
     while a.state not in ('SUCCESS', 'FAILURE'): 
         a_value = "Esperando"
         b_value = "Esperando"
