@@ -19,7 +19,8 @@ def pegar():
     a = debug_task.delay(word)
     time.sleep(1)
     while a.status == "PENDING": 
-        return "Por favor, espere 1 a 2 minutos" 
+        a_value = (a.get())[0]
+        return render_template('wait.html',a_value = a_value) 
         break
     a_value = (a.get())[0]
     b_value = (a.get())[1]
