@@ -108,8 +108,6 @@ def debug_task(self, word):
         
             else:
                 print("Error  ao content MOMENTO 1")
-
-    """"
     print("Resultado antes do momento 2: ", resultado_final)
     print("MOMENTO 2 ---- SE PASSOU DAQUI< RETIRA TUDO ANTES")   
     # AQUI EU JA PEGUEI VALORES DA 1º pÁGINA, e VOU COMEÇAR O A LISTAR RESULTADO DE TODAS AS PÁGINAS    
@@ -221,7 +219,7 @@ def debug_task(self, word):
             print("error no teste")
             continue
     
-     """"      
+
 
 
     print("ACABOu")
