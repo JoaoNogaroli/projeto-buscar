@@ -13,8 +13,8 @@ import os
 import sqlalchemy
 import time
 import re
-import firebase
-
+import pyrebase
+from firebase import firebase
 celery = Celery('task',broker=CELERY_BROKER_BACKEND, backend=result_backend)
 
 #celery.config_from_object('celeryconfig')
@@ -29,8 +29,7 @@ firebaseConfig = {
     "measurementId": "G-6JT7B5X9DY"
   };
 #Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
+firebase = pyrebase.initialize_app(firebaseConfig);
 
 database = firebase.database()
 
