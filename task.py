@@ -28,7 +28,7 @@ firebaseConfig = {
     "appId": "1:263395259912:web:a45cc33a1140500971c3bd",
     "measurementId": "G-6JT7B5X9DY"
   };
-// Initialize Firebase
+#Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
