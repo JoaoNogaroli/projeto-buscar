@@ -17,7 +17,7 @@ def pegar():
     
     a = debug_task.delay(word)
     while a.status == "PENDING": 
-        return redirect(url_for('/wait'))
+        return render_template('wait.html')
     a_value = (a.get())[0]
     b_value = (a.get())[1]
 
