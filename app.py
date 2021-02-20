@@ -18,8 +18,8 @@ def pegar():
     
     a = debug_task.delay(word)
     time.sleep(1)
-    while a.status == "PENDING": 
-        return render_template('teste.html', progress = a.status)        
+    while a.state not in ('SUCCESS', 'FAILURE'): 
+        return redirect(url_for('index'), progress = a.status)        
     else:
         a_value = (a.get())[0]
         b_value = (a.get())[1]        
