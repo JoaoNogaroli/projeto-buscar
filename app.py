@@ -12,7 +12,7 @@ app = Flask(__name__)
 port = int(os.environ.get("PORT", 5000))
       
 
-@app.route('/', methods = ['POST'])
+@app.route('/resultado', methods = ['POST'])
 def pegar():
     word = request.form['jojo']
     
