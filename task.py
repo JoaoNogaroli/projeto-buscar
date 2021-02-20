@@ -34,7 +34,7 @@ firebase = pyrebase.initialize_app(firebaseConfig);
 database = firebase.database()
 
 
-@celery.task(bind=true)
+@celery.task(bind=True)
 def debug_task(self, word):
     url = "https://riovagas.com.br/"
     chrome_options = webdriver.ChromeOptions()
