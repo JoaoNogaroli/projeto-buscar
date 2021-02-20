@@ -19,18 +19,18 @@ def pegar():
     word = request.form['jojo']
     
     a = debug_task.delay(word)
-    a_id = debug_task(word).AsyncResult(task_id)
-    b = a_id.get()
+    
     time.sleep(1)
     while a.state not in ('SUCCESS', 'FAILURE'): 
+        a_id = debug_task(word).AsyncResult(task_id)
+        b = a_id.get()
         a_value = "Esperando"
         b_value = "Esperando"
         return render_template('teste.html', progress =b, a = a_value, b= b_value)
     else:
         a_value = (a.get())[0]
         b_value = (a.get())[1] 
-
-    return render_template('teste.html', progress=b, a = a_value, b= b_value)
+        return render_template('teste.html', progress=b, a = a_value, b= b_value)
 
 @app.route('/teste')
 def refresh():
