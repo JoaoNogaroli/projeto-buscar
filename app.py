@@ -16,7 +16,8 @@ port = int(os.environ.get("PORT", 5000))
 def pegar():
     word = request.form['jojo']
     
-    a = debug_task.delay(word)
+    a = debug_task(word).AsyncResult(task_id)
+    b = a.get()
     """time.sleep(1)
     while a.state not in ('SUCCESS', 'FAILURE'): 
         a_value = (a.get())[0]
@@ -26,7 +27,11 @@ def pegar():
         a_value = (a.get())[0]
         b_value = (a.get())[1]   """   
 
-    return render_template('teste.html', progress = a.status)
+    return render_template('teste.html', progress=b)
+
+@app.route('/teste')
+def refresh():
+    b = debug_task.delay.status
 
 
 @app.route('/')
