@@ -945,11 +945,7 @@ p {
   }
 }
 
-:root {
-    background: #f5f6fa;
-    color: #9c9c9c;
-    font: 1rem "PT Sans", sans-serif;
-  }
+
   
   html,
   body,
@@ -988,7 +984,7 @@ p {
   }
   .btn--primary {
     background: #7f8ff4;
-    color: #fff;
+    color: rgb(255, 255, 255);
     box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
     border-radius: 2px;
     padding: 12px 36px;
@@ -1006,8 +1002,8 @@ p {
   
   .form__field {
     width: 360px;
-    background: #fff;
-    color: #a3a3a3;
+    background: rgb(255, 255, 255);
+    color: #000000;
     font: inherit;
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
     border: 0;
@@ -1048,7 +1044,7 @@ p {
 
  }
  #column{
-   color:rgb(0, 0, 0);
+  color:rgb(0, 0, 0);
   width: 30%;
   float: left;
   margin: 10px;
@@ -1059,4 +1055,15 @@ p {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0b0b0b",endColorstr="#5e929c",GradientType=1);
   border: 2px solid  white;
   border-radius: 25px;
+}
+
+.enviar_email{
+   width: 360px;
+    background: transparent;
+    color: #ffffff;
+    font: inherit;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+    border: 0;
+    outline: 0;
+    padding: 22px 18px;
 }
