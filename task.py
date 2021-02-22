@@ -229,7 +229,7 @@ def debug_task(self, word):
             
             i = i + 1
         except Exception:
-        continue
+            continue
             
     
 
