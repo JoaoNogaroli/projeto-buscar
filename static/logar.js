@@ -8,7 +8,6 @@ btnLogin.addEventListener('click', function(){
 
    firebase.auth().signInWithEmailAndPassword(email.value, password.value).then(function(result){
       window.alert("Bem Vindo:  " + email.value)
-      /*window.location.href = "http://127.0.0.1:5000/segundapag"*/      
       window.location.href = "https://projeto-buscar.herokuapp.com/segundapag";
   }).catch(function(error) {
       // Handle Errors here.
