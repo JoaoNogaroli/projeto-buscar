@@ -43,7 +43,7 @@ def segundapagina():
    
     
 def salvar_id(user_uid,task_id,txt_pesquisa):
-    database.child("Pesquisa/"+user_uid).set({
+    database.child("Users/"+user_uid+"/"+"Pesquisa/").set({
                 "Txt_pesquisado":  txt_pesquisa,
                 "Task_id" : task_id
     })
