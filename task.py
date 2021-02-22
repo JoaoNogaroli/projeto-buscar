@@ -16,7 +16,6 @@ import re
 import pyrebase
 from firebase import firebase
 celery = Celery('task',broker=CELERY_BROKER_BACKEND, backend=result_backend)
-import app
 
 #celery.config_from_object('celeryconfig')
 firebaseConfig = {
@@ -35,7 +34,7 @@ firebase = pyrebase.initialize_app(firebaseConfig);
 database = firebase.database()
 
 
-@app.route('/segundapag/', methods = ['POST'])
+@celery.task('/segundapag/', methods = ['POST'])
 def pegar():
     user_uid = request.form['user_uid']
     return user_uid
@@ -218,14 +217,12 @@ def debug_task(self, word):
     user_uid = pegar()
 
     for i in range (0,15):
-        try:
-            database.child("Pesquisa/"+user_uid+"/"+"Pesq_Real").set({
+        database.child("Pesquisa/"+user_uid+"/"+"Pesq_Real").set({
                 f'NomeDaVaga{i}': rl[i],
                 f'LinkDaVaga{i}': lr[i]
                 })
-        except Exception:
-            print("error no teste")
-            continue
+                time.sleep(0.5)
+        i = i + 1
     
 
 
