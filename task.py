@@ -219,7 +219,7 @@ def debug_task(self, word,user_uid):
                     f'NomeDaVaga{i}': rl[i],
                     f'LinkDaVaga{i}': lr[i]
                     })
-           
+           print("salvando :", i)
         except Exception:
             continue
             
