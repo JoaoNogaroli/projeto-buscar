@@ -54,7 +54,7 @@ def pegar():
     word = request.form['jojo']
     user = request.form['user_email']   
     user_uid = request.form['user_uid']
-    a = debug_task.delay(word)
+    a = debug_task.delay(word,user_uid)
     task_id = a.id
     time.sleep(1)
     salvar_id(user_uid,task_id, word)

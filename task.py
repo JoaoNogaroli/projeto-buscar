@@ -37,13 +37,8 @@ firebase = pyrebase.initialize_app(firebaseConfig);
 database = firebase.database()
 
 
-@ter.route('/segundapag/', methods = ['POST'])
-def pegar():
-    user_uid = request.form['user_uid']
-    return user_uid
-
 @celery.task(bind=True)
-def debug_task(self, word):
+def debug_task(self, word,user_uid):
     url = "https://riovagas.com.br/"
     chrome_options = webdriver.ChromeOptions()
     chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
