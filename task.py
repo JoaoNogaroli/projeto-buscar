@@ -220,13 +220,17 @@ def debug_task(self, word):
     user_uid = pegar()
 
     for i in range (0,15):
-        time.sleep(0.5)
-        database.child("Pesquisa/"+user_uid+"/"+"Pesq_Real").set({
-                f'NomeDaVaga{i}': rl[i],
-                f'LinkDaVaga{i}': lr[i]
-                })
-        
-        i = i + 1
+        try:
+            time.sleep(0.5)
+            database.child("Pesquisa/"+user_uid+"/"+"Pesq_Real").set({
+                    f'NomeDaVaga{i}': rl[i],
+                    f'LinkDaVaga{i}': lr[i]
+                    })
+            
+            i = i + 1
+        Exception:
+        continue
+            
     
 
 
