@@ -212,7 +212,6 @@ def debug_task(self, word,user_uid):
 
     driver.close()
 
-    user_uid = pegar()
 
     for i in range (0,15):
         try:
