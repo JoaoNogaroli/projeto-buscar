@@ -228,7 +228,7 @@ def debug_task(self, word):
                     })
             
             i = i + 1
-        Exception:
+        except Exception:
         continue
             
     
