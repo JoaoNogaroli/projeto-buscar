@@ -8,7 +8,6 @@ from task import debug_task
 import time
 import pyrebase
 from firebase import firebase
-import sys
 
 app = Flask(__name__)
 

@@ -17,7 +17,7 @@ import pyrebase
 from firebase import firebase
 celery = Celery('task',broker=CELERY_BROKER_BACKEND, backend=result_backend)
 
-app = Flask(__name__)
+ter = Flask(__name__)
 
 
 #celery.config_from_object('celeryconfig')
@@ -37,7 +37,7 @@ firebase = pyrebase.initialize_app(firebaseConfig);
 database = firebase.database()
 
 
-@app.route('/segundapag/', methods = ['POST'])
+@ter.route('/segundapag/', methods = ['POST'])
 def pegar():
     user_uid = request.form['user_uid']
     return user_uid
