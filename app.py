@@ -9,7 +9,6 @@ import time
 import pyrebase
 from firebase import firebase
 import sys
-import eel
 
 app = Flask(__name__)
 
