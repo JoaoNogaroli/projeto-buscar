@@ -16,6 +16,7 @@ import re
 import pyrebase
 from firebase import firebase
 celery = Celery('task',broker=CELERY_BROKER_BACKEND, backend=result_backend)
+import app
 
 #celery.config_from_object('celeryconfig')
 firebaseConfig = {
@@ -34,8 +35,13 @@ firebase = pyrebase.initialize_app(firebaseConfig);
 database = firebase.database()
 
 
+@app.route('/segundapag/', methods = ['POST'])
+def pegar():
+    user_uid = request.form['user_uid']
+    return user_uid
+
 @celery.task(bind=True)
-def debug_task(self, word, user_uid):
+def debug_task(self, word):
     url = "https://riovagas.com.br/"
     chrome_options = webdriver.ChromeOptions()
     chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -208,6 +214,8 @@ def debug_task(self, word, user_uid):
     #print("LISTA 2: ", lr)
 
     driver.close()
+
+    user_uid = pegar()
 
     for i in range (0,15):
         try:
