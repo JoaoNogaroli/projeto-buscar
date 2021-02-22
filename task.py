@@ -219,8 +219,7 @@ def debug_task(self, word,user_uid):
                     f'NomeDaVaga{i}': rl[i],
                     f'LinkDaVaga{i}': lr[i]
                     })
-            
-            i = i + 1
+           
         except Exception:
             continue
             
