@@ -215,7 +215,7 @@ def debug_task(self, word,user_uid):
 
     for i in range (0,15):
         try:
-            database.child("Users/"+user_uid+"/"+"Pesquisa/"+"Resultado_Pesq").set({
+            database.child("Users/"+user_uid+"/"+"Pesquisa/"+"Resultado_Pesq{i}").set({
                     f'NomeDaVaga{i}': rl[i],
                     f'LinkDaVaga{i}': lr[i]
                     })
