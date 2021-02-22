@@ -35,7 +35,7 @@ database = firebase.database()
 
 
 @celery.task(bind=True)
-def debug_task(self, word):
+def debug_task(self, word, user_uid):
     url = "https://riovagas.com.br/"
     chrome_options = webdriver.ChromeOptions()
     chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
@@ -211,7 +211,7 @@ def debug_task(self, word):
 
     for i in range (0,15):
         try:
-            database.child("TESTE").child(f'Resultado{i}').set({
+            database.child("Pesquisa/"+user_uid+"Pesq_Real").set({
                 f'NomeDaVaga{i}': rl[i],
                 f'LinkDaVaga{i}': lr[i]
                 })
