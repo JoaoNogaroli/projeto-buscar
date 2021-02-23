@@ -17,8 +17,6 @@ import pyrebase
 from firebase import firebase
 celery = Celery('task',broker=CELERY_BROKER_BACKEND, backend=result_backend)
 
-ter = Flask(__name__)
-
 
 #celery.config_from_object('celeryconfig')
 firebaseConfig = {
@@ -217,8 +215,8 @@ def debug_task(self, word,user_uid):
         try:
             print("salvando :", i)
             database.child("Users/"+user_uid+"/"+"Pesquisa/"+"Lista_resultados/"+f"Resultado_Pesq{i}").set({
-                    f'NomeDaVaga{i}': rl[i],
-                    f'LinkDaVaga{i}': lr[i]
+                    'NomeDaVaga': rl[i],
+                    'LinkDaVaga': lr[i]
             })
             
         except Exception:
