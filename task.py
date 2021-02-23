@@ -140,10 +140,10 @@ def debug_task(self, word,user_uid):
             print(i, "Trocando de pagina")
 
             ##---- TESTANDO A FUNÇÂO DE BUSCAR ITEM
-            results_sem_formato = []
+            """results_sem_formato = []
             results_com_formato = []
 
-            links_resultados = []
+            links_resultados = []"""
 
             element = driver.find_elements_by_xpath("//div[@class='vce-loop-wrap custom-lay-b']//h2//a")
             element_dois = driver.find_elements_by_xpath("//div[@class='vce-loop-wrap custom-lay-b']//h2//a")
@@ -229,3 +229,136 @@ def debug_task(self, word,user_uid):
     print("ACABOu")
     return rl, lr
     
+@celery.task(bind=True)
+def debug_catho(self,txt_catho):
+    #text = input("Digite o nome do cargo: ")
+    url = "https://catho.com.br/"
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    chrome_options.add_argument('window-size=1400,900')
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--no-sandbox")
+    #------>Usar no deploy
+    driver = webdriver.Chrome(executable_path=os.environ.get('CHROMEDRIVER_PATH'), chrome_options=chrome_options) #
+    #Usar nos testes,
+    #driver = webdriver.Chrome(executable_path=r"C:\\Users\\joaon\\Desktop\\selenium-webdriver\\chromedriver", chrome_options=chrome_options)#
+    driver.get(url)
+    #--------------       INICIANDO => Clique no input para digitar ======
+    btn_input = driver.find_element_by_xpath("/html/body/div[1]/div[1]/header/div/div/div[3]/div/nav/ul/li[4]/a")
+    #time.sleep(2.5)
+    btn_input.send_keys(Keys.ENTER)
+
+    btn_email = driver.find_element_by_xpath("/html/body/div[2]/div/div/main/div/div/div/div/article/div/form/div[1]/div/input")
+    btn_email.send_keys("jv.nogaroli@gmail.com")
+    btn_password = driver.find_element_by_xpath("/html/body/div[2]/div/div/main/div/div/div/div/article/div/form/div[2]/div/input")
+    btn_password.send_keys("Peidoo237!")
+
+    btn_entrar = driver.find_element_by_xpath("/html/body/div[2]/div/div/main/div/div/div/div/article/div/form/button")
+    btn_entrar.send_keys(Keys.ENTER)
+    time.sleep(2.5)
+
+    #text = input("Digite o nome do cargo: ")
+    #text = "estágio direito"
+    time.sleep(2.5)
+
+    btn_text = driver.find_element_by_xpath("/html/body/header/div[3]/form/div[1]/fieldset/label/input")
+
+    btn_text.send_keys(txt_catho)
+
+    btn_buscar = driver.find_element_by_xpath("/html/body/header/div[3]/form/div[1]/fieldset/input")
+    btn_buscar.send_keys(Keys.ENTER)
+    time.sleep(3.5)
+
+    cidade = driver.find_element_by_xpath("/html/body/div[1]/div[3]/main/div[2]/section/div/form/div[2]/div[1]/div/div/input")
+    texto_cidade = "Rio de Janeiro"
+    cidade.send_keys(texto_cidade)
+    time.sleep(0.5)
+    cidade.send_keys(Keys.DOWN)
+    time.sleep(0.5)
+    cidade.send_keys((Keys.ENTER))
+    #botao_final = driver.find_element_by_xpath("/html/body/div[1]/div[3]/main/div[2]/section/div/form/button[2]")
+    #botao_final.send_keys(Keys.ENTER)
+    time.sleep(3)
+    itens = driver.find_elements_by_xpath("/html/body/div[1]/div[3]/main/div[3]/div/div/section/ul/li/article/header/div/div/h2/a")
+    valor = driver.find_elements_by_xpath("/html/body/div[1]/div[3]/main/div[3]/div/div/section/ul/li/article/header/div/div/div")
+
+
+    lista_nome = []
+    lista_valor = []
+    lista_href = []
+
+    for i in range(0,10):
+        time.sleep(1)
+        try:
+            item_nome = itens[i].get_attribute('innerHTML')
+            item_valor = valor[i].get_attribute('innerHTML')
+            item_href = itens[i].get_attribute('href')
+            lista_nome.append(item_nome)
+            lista_valor.append(item_valor)
+            lista_href.append(item_href)
+            print(item_nome)
+            print(item_valor)
+            print(item_href)
+        except Exception:
+            print("ERROR")
+            continue
+
+    """info = {}
+    info = dict(zip(lista_nome, zip(lista_valor,lista_href)))
+    print(info)"""
+
+    listar_paginas = []
+    for i in range (0, 15):
+        try:
+            page_numbers = []
+            page_numbers = driver.find_elements_by_xpath("/html/body/div[1]/div[3]/main/div[3]/div/div/section/div/nav/a")
+            print("Numero da página: ", page_numbers[i].get_attribute('innerHTML'))
+            listar_paginas.append(page_numbers[i].get_attribute('innerHTML'))
+        except Exception:
+            print("----Acabou---")
+
+    print(listar_paginas)
+
+    new_items = [item for item in listar_paginas if item.isdigit()]
+
+    print(new_items)
+    print("ULTIMO ITEM: ", new_items[-1])
+    last_pag = int(new_items[-1])
+
+    if (last_pag>5):
+        last_pag = 5
+    for i in range(0, last_pag-1):
+        time.sleep(2)
+        try:
+            elemento_tres = driver.find_element_by_xpath("/html/body/div[1]/div[3]/main/div[3]/div/div/section/div[3]/nav/a[2]")
+            driver.execute_script("arguments[0].click();", elemento_tres)
+            time.sleep(4)
+            itens = driver.find_elements_by_xpath("/html/body/div[1]/div[3]/main/div[3]/div/div/section/ul/li/article/header/div/div/h2/a")
+            valor = driver.find_elements_by_xpath("/html/body/div[1]/div[3]/main/div[3]/div/div/section/ul/li/article/header/div/div/div")
+
+
+            for i in range(0, 10):
+                time.sleep(1)
+                try:
+                    item_nome = itens[i].get_attribute('innerHTML')
+                    item_valor = valor[i].get_attribute('innerHTML')
+                    item_href = itens[i].get_attribute('href')
+                    lista_nome.append(item_nome)
+                    lista_valor.append(item_valor)
+                    lista_href.append(item_href)
+                    print(item_nome)
+                    print(item_valor)
+                    print(item_href)
+                except Exception:
+                    print("ERROR")
+                    continue
+
+
+
+        except Exception:
+            print("ERROR NA MUDANÇA DE PAGNA")
+
+    print(lista_nome)
+    print(len(lista_nome))
+    driver.quit()

@@ -4,7 +4,7 @@ from flask import Flask, render_template, url_for, request, session, redirect, j
 import json
 import os
 from script import teste
-from task import debug_task
+from task import debug_task, debug_catho
 import time
 import pyrebase
 from firebase import firebase
@@ -40,7 +40,7 @@ def segundapagina():
     
     return render_template('segundapag.html')
 
-   
+
     
 def salvar_id(user_uid,task_id,txt_pesquisa):
     database.child("Users/"+user_uid+"/"+"Pesquisa/").set({
@@ -56,17 +56,18 @@ def pegar():
     user_uid = request.form['user_uid']
     a = debug_task.delay(word,user_uid)
     task_id = a.id
-    time.sleep(1)
+    time.sleep(2)
     salvar_id(user_uid,task_id, word)
-    while a.status == "PENDING": 
-        
-        return render_template('wait.html',a_value =user, a_id=task_id)
-        break
-    a_value = (a.get())[0]
-    b_value = (a.get())[1]
-    
-    return render_template('teste.html', a = a_value, b= b_value)
-#
+            
+    return render_template('wait.html',a_value =user, a_id=task_id)
+    break
+   
+
+@app.route('/catho', methods=['POST'])
+def pegar_catho():
+    txt_catho = request.form['txt_catho']
+    func_catho = debug_catho.delay(txt_catho)
+    return render_template('catho.html', txt_catho=txt_catho)
 
 
 if __name__== "__main__":

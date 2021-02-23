@@ -24,18 +24,22 @@
         </div>
         <header class="wrapper">
             <h2 id="email_user"></h2>
-            <h1 class="title">Busque de Vagas!</h1>
+            <h1 class="title">Busque Vagas!</h1>
             <div class="container">
                 <div class="container__item">
                     <form action="." class="form" method="POST">
                         <input name="user_uid" class="enviar_email"  type="hidden" id="user_uid" value="" readonly >
 
-                        <input name="user_email" class="enviar_email" type="text" id="input_email" value="" readonly >
-                        <input type="text" name="jojo" class="form__field" placeholder="Qual vaga está buscando?"/>
+                        <input name="user_email" class="enviar_email" type="text" id="input_email" value="" readonly ><br>
+                        <input type="text" name="jojo" class="form__field" placeholder="RIO VAGAS: Busque Vagas!"/>
                         <input type="submit" value="Buscar" class="btn btn--primary btn--inside uppercase">
                         
                     </form>
-                                        
+                    <form action="/catho" class="form" method="POST">
+                        <!--vou tentar algo da catho aqui-->
+                        <input type="text" name="txt_catho" class="form__field" placeholder="CATHO: Busque Vagas!"/>
+                        <input type="submit" value="Buscar" class="btn btn--primary btn--inside uppercase">
+                    </form>
                 </div>
 
               
