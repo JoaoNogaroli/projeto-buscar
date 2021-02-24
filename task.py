@@ -206,7 +206,7 @@ def debug_task(self, word,user_uid):
     #print("/////////////---------/////////////---------/////////////---------/////////////---------/////////////---------/////////////---------")
 
     #print("LISTA 2: ", lr)
-
+    driver.quit()
     driver.close()
 
 
@@ -361,3 +361,4 @@ def debug_catho(self,txt_catho):
     print(lista_nome)
     print(len(lista_nome))
     driver.quit()
+    driver.close()
