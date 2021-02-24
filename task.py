@@ -140,11 +140,10 @@ def debug_task(self, word,user_uid):
             print(i, "Trocando de pagina")
 
             ##---- TESTANDO A FUNÇÂO DE BUSCAR ITEM
-            """results_sem_formato = []
+            results_sem_formato = []
             results_com_formato = []
 
-            links_resultados = []"""
-
+            links_resultados = []
             element = driver.find_elements_by_xpath("//div[@class='vce-loop-wrap custom-lay-b']//h2//a")
             element_dois = driver.find_elements_by_xpath("//div[@class='vce-loop-wrap custom-lay-b']//h2//a")
 
