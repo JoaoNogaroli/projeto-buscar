@@ -229,7 +229,7 @@ def debug_task(self, word,user_uid):
     return rl, lr
     
 @celery.task(bind=True)
-def debug_catho(self,txt_catho):
+def debug_catho(self,txt_catho,user_uid):
     #text = input("Digite o nome do cargo: ")
     url = "https://catho.com.br/"
     chrome_options = webdriver.ChromeOptions()
@@ -360,5 +360,20 @@ def debug_catho(self,txt_catho):
 
     print(lista_nome)
     print(len(lista_nome))
+    
+
+    for i in range (0, len(lista_nome)-1):
+        try:
+            print("salvando :", i)
+            database.child("Users/"+user_uid+"/"+"Pesquisa_catho/"+"Lista_resultados_catho/"+f"Resultado_Pesq{i}").set({
+                    'NomeDaVaga': lista_nome[i],
+                    'LinkDaVaga': lista_href[i],
+                    'ValorDaVaga': lista_valor[i]
+            })
+        
+        except Exception:
+            continue
+
     driver.quit()
-    driver.close()
+    #driver.close()
+    return lista_nome, lista_href, lista_valor

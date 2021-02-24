@@ -48,6 +48,12 @@ def salvar_id(user_uid,task_id,txt_pesquisa):
                 "Task_id" : task_id
     })
 
+def salvar_id_catho(user_uid,task_id,txt_pesquisa):
+    database.child("Users/"+user_uid+"/"+"Pesquisa_catho/").set({
+                "Txt_pesquisado":  txt_pesquisa,
+                "Task_id" : task_id
+})
+
 
 @app.route('/segundapag/', methods = ['POST'])
 def pegar():
@@ -66,8 +72,13 @@ def pegar():
 @app.route('/catho', methods=['POST'])
 def pegar_catho():
     txt_catho = request.form['txt_catho']
-    func_catho = debug_catho.delay(txt_catho)
-    return render_template('catho.html', txt_catho=txt_catho)
+    user_uid = request.form['user_uid_dois']
+    func_catho = debug_catho.delay(txt_catho,user_uid)
+    time.sleep(1)
+    task_id = func_catho.id
+    salvar_id_catho(user_uid, task_id, txt_catho)
+
+    return render_template('catho.html', txt_catho=txt_catho, task_id= task_id)
 
 
 if __name__== "__main__":
