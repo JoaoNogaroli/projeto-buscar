@@ -60,7 +60,7 @@ def pegar():
     salvar_id(user_uid,task_id, word)
             
     return render_template('wait.html',a_value =user, a_id=task_id)
-    break
+
    
 
 @app.route('/catho', methods=['POST'])
